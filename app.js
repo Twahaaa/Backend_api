@@ -17,11 +17,13 @@ app.use('/api/v-1/auth', authRouter);
 app.use('/api/v-1/users', userRouter);
 app.use('/api/v-1/subscriptions', subscriptionRouter);
 
-app.use(errorMiddleware);
 
 app.get('/',(req,res)=>{
     res.send("Welcome to the subscription tracker api");
 });
+
+app.use(errorMiddleware);
+
 
 app.listen(PORT, async()=>{
     console.log(`Server is running on port ${PORT}`);

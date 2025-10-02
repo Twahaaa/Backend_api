@@ -58,6 +58,81 @@ export const signUp = async (req, res, next) => {
   }
 };
 
-export const signIn = async (req, res, next) => {};
+// export const signIn = async (req, res, next) => {
+//   try {
+//     const { email, password } = req.body;
+
+//     const user = await User.findOne({
+//       email,
+//     });
+
+//     if (!user) {
+//       const error = new Error("Invalid email or password");
+//       error.statusCode = 401;
+//       throw error;
+//     }
+//     const isPasswordValid = await bcrypt.compare(password, user.password);
+
+//     if (!isPasswordValid) {
+//       const error = new Error("Invalid email or password");
+//       error.statusCode = 401;
+//       throw error;
+//     }
+
+//     const token = jwt.sign({ userId: user._id }, JWT_SECRET, {
+//       expiresIn: JWT_EXPIRY,
+//     });
+
+//     res.status(200).json({
+//       success: true,
+//       message: "User signed in succesfully",
+//       data: {
+//         token,
+//         user,
+//       },
+//     });
+//   } catch (error) {
+//     next(error);
+//   }
+// };
+
+export const signIn = async (req, res, next) => {
+  try {
+    console.log("1. Incoming request:", req.body);
+
+    const { email, password } = req.body;
+
+    console.log("2. Looking up user...");
+    const user = await User.findOne({ email });
+    console.log("3. User found:", user ? user._id : "none");
+
+    if (!user) {
+      return res.status(401).json({ success: false, message: "Invalid email or password" });
+    }
+
+    console.log("4. Comparing password...");
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+    console.log("5. Password valid:", isPasswordValid);
+
+    if (!isPasswordValid) {
+      return res.status(401).json({ success: false, message: "Invalid email or password" });
+    }
+
+    console.log("6. Signing JWT...");
+    const token = jwt.sign({ userId: user._id }, JWT_SECRET, { expiresIn: JWT_EXPIRY });
+
+    console.log("7. Sending response...");
+    res.status(200).json({
+      success: true,
+      message: "User signed in successfully",
+      data: { token },
+    });
+  } catch (error) {
+    console.error("🔥 Error in signIn:", error);
+    next(error);
+  }
+};
+
+
 
 export const signOut = async (req, res, next) => {};
