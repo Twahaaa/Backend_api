@@ -76,9 +76,14 @@ subscriptionSchema.pre("save", function (next) {
       monthly: 30,
       yearly: 365,
     };
-    this.renewalDate.setDate(
-      this.renewalDate.getDate() + renewalPeriods[this.frequency]
+        
+    const newRenewalDate = new Date(this.startDate);
+
+    newRenewalDate.setDate(
+      newRenewalDate.getDate() + renewalPeriods[this.frequency]
     );
+
+    this.renewalDate = newRenewalDate;
   }
 
   if(this.renewalDate < new Date()){

@@ -9,13 +9,13 @@ const aj = arcjet({
 
   rules: [
     // Shield protects your app from common attacks e.g. SQL injection
-
+    
     shield({ mode: "LIVE" }),
 
     // Create a bot detection rule
 
     detectBot({
-      mode: "LIVE", // Blocks requests. Use "DRY_RUN" to log only
+      mode: "DRY_RUN", // Blocks requests. Use "DRY_RUN" to log only
 
       // Block all bots except the following
 
