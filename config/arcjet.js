@@ -10,7 +10,7 @@ const aj = arcjet({
   rules: [
     // Shield protects your app from common attacks e.g. SQL injection
     
-    shield({ mode: "LIVE" }),
+    shield({ mode: "DRY_RUN" }),
 
     // Create a bot detection rule
 
