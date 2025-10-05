@@ -1,0 +1,479 @@
+{
+  "info": {
+    "title": "API Documentation",
+    "version": "1.0.0",
+    "description": "Auto-generated API documentation for Express.js application",
+    "generatedAt": "2025-10-05T04:00:14.469Z"
+  },
+  "paths": {
+    "/api/v-1/auth/sign-up": {
+      "post": {
+        "summary": "POST /api/v-1/auth/sign-up",
+        "responses": [
+          {
+            "status": 201,
+            "description": "Created",
+            "contentType": "application/json",
+            "schema": {
+              "success": "boolean",
+              "message": "User created successfully",
+              "data": {
+                "token": "{token}",
+                "user": "unknown"
+              }
+            }
+          },
+          {
+            "status": 500,
+            "description": "Internal Server Error",
+            "contentType": "application/json"
+          }
+        ],
+        "middleware": []
+      }
+    },
+    "/api/v-1/auth/sign-in": {
+      "post": {
+        "summary": "POST /api/v-1/auth/sign-in",
+        "responses": [
+          {
+            "status": 200,
+            "description": "OK",
+            "contentType": "application/json",
+            "schema": {
+              "success": "boolean",
+              "message": "User signed in succesfully",
+              "data": {
+                "token": "{token}",
+                "user": "{user}"
+              }
+            }
+          },
+          {
+            "status": 500,
+            "description": "Internal Server Error",
+            "contentType": "application/json"
+          }
+        ],
+        "middleware": []
+      }
+    },
+    "/api/v-1/users": {
+      "get": {
+        "summary": "GET /api/v-1/users",
+        "responses": [
+          {
+            "status": 200,
+            "description": "OK",
+            "contentType": "application/json",
+            "schema": {
+              "success": "boolean",
+              "message": "Users fetched successfully",
+              "data": "{users}"
+            }
+          },
+          {
+            "status": 500,
+            "description": "Internal Server Error",
+            "contentType": "application/json"
+          }
+        ],
+        "middleware": []
+      },
+      "post": {
+        "summary": "POST /api/v-1/users",
+        "responses": [
+          {
+            "status": 200,
+            "description": "Success",
+            "contentType": "application/json",
+            "schema": {
+              "title": "create a user"
+            }
+          }
+        ],
+        "middleware": []
+      }
+    },
+    "/api/v-1/users/:id": {
+      "get": {
+        "summary": "GET /api/v-1/users/:id",
+        "responses": [
+          {
+            "status": 401,
+            "description": "Unauthorized",
+            "contentType": "application/json",
+            "schema": {
+              "message": "Not authorized, no token"
+            }
+          },
+          {
+            "status": 401,
+            "description": "Unauthorized",
+            "contentType": "application/json",
+            "schema": {
+              "message": "Not authorized, no token"
+            }
+          },
+          {
+            "status": 500,
+            "description": "Internal Server Error",
+            "contentType": "application/json"
+          },
+          {
+            "status": 401,
+            "description": "Unauthorized",
+            "contentType": "application/json",
+            "schema": {
+              "message": "Not authorized, no token",
+              "error": "unknown"
+            }
+          },
+          {
+            "status": 200,
+            "description": "OK",
+            "contentType": "application/json",
+            "schema": {
+              "success": "boolean",
+              "message": "Users fetched successfully",
+              "data": "{user}"
+            }
+          },
+          {
+            "status": 500,
+            "description": "Internal Server Error",
+            "contentType": "application/json"
+          }
+        ],
+        "middleware": [
+          "authorize"
+        ],
+        "security": [
+          "authorize"
+        ]
+      },
+      "put": {
+        "summary": "PUT /api/v-1/users/:id",
+        "responses": [
+          {
+            "status": 200,
+            "description": "Success",
+            "contentType": "application/json",
+            "schema": {
+              "title": "update a user"
+            }
+          }
+        ],
+        "middleware": []
+      },
+      "delete": {
+        "summary": "DELETE /api/v-1/users/:id",
+        "responses": [
+          {
+            "status": 200,
+            "description": "Success",
+            "contentType": "application/json",
+            "schema": {
+              "title": "delete a user"
+            }
+          }
+        ],
+        "middleware": []
+      }
+    },
+    "/api/v-1/subscriptions": {
+      "get": {
+        "summary": "GET /api/v-1/subscriptions",
+        "responses": [
+          {
+            "status": 200,
+            "description": "Success",
+            "contentType": "application/json",
+            "schema": {
+              "title": "get all subscriptions"
+            }
+          }
+        ],
+        "middleware": []
+      },
+      "post": {
+        "summary": "POST /api/v-1/subscriptions",
+        "responses": [
+          {
+            "status": 401,
+            "description": "Unauthorized",
+            "contentType": "application/json",
+            "schema": {
+              "message": "Not authorized, no token"
+            }
+          },
+          {
+            "status": 401,
+            "description": "Unauthorized",
+            "contentType": "application/json",
+            "schema": {
+              "message": "Not authorized, no token"
+            }
+          },
+          {
+            "status": 500,
+            "description": "Internal Server Error",
+            "contentType": "application/json"
+          },
+          {
+            "status": 401,
+            "description": "Unauthorized",
+            "contentType": "application/json",
+            "schema": {
+              "message": "Not authorized, no token",
+              "error": "unknown"
+            }
+          },
+          {
+            "status": 201,
+            "description": "Created",
+            "contentType": "application/json",
+            "schema": {
+              "success": "boolean",
+              "data": {
+                "subscription": "{subscription}",
+                "workflowRunId": "{workflowRunId}"
+              }
+            }
+          },
+          {
+            "status": 500,
+            "description": "Internal Server Error",
+            "contentType": "application/json"
+          }
+        ],
+        "middleware": [
+          "authorize"
+        ],
+        "security": [
+          "authorize"
+        ]
+      }
+    },
+    "/api/v-1/subscriptions/:id": {
+      "get": {
+        "summary": "GET /api/v-1/subscriptions/:id",
+        "responses": [
+          {
+            "status": 200,
+            "description": "Success",
+            "contentType": "application/json",
+            "schema": {
+              "title": "get a subscription by id"
+            }
+          }
+        ],
+        "middleware": []
+      },
+      "put": {
+        "summary": "PUT /api/v-1/subscriptions/:id",
+        "responses": [
+          {
+            "status": 200,
+            "description": "Success",
+            "contentType": "application/json",
+            "schema": {
+              "title": "update a subscription by id"
+            }
+          }
+        ],
+        "middleware": []
+      },
+      "delete": {
+        "summary": "DELETE /api/v-1/subscriptions/:id",
+        "responses": [
+          {
+            "status": 200,
+            "description": "Success",
+            "contentType": "application/json",
+            "schema": {
+              "title": "delete a subscription by id"
+            }
+          }
+        ],
+        "middleware": []
+      }
+    },
+    "/api/v-1/subscriptions/user/:id": {
+      "get": {
+        "summary": "GET /api/v-1/subscriptions/user/:id",
+        "responses": [
+          {
+            "status": 401,
+            "description": "Unauthorized",
+            "contentType": "application/json",
+            "schema": {
+              "message": "Not authorized, no token"
+            }
+          },
+          {
+            "status": 401,
+            "description": "Unauthorized",
+            "contentType": "application/json",
+            "schema": {
+              "message": "Not authorized, no token"
+            }
+          },
+          {
+            "status": 500,
+            "description": "Internal Server Error",
+            "contentType": "application/json"
+          },
+          {
+            "status": 401,
+            "description": "Unauthorized",
+            "contentType": "application/json",
+            "schema": {
+              "message": "Not authorized, no token",
+              "error": "unknown"
+            }
+          },
+          {
+            "status": 403,
+            "description": "Forbidden",
+            "contentType": "application/json",
+            "schema": {
+              "success": "boolean",
+              "message": "Forbidden"
+            }
+          },
+          {
+            "status": 200,
+            "description": "OK",
+            "contentType": "application/json",
+            "schema": {
+              "success": "boolean",
+              "data": "{subscription}"
+            }
+          },
+          {
+            "status": 500,
+            "description": "Internal Server Error",
+            "contentType": "application/json"
+          }
+        ],
+        "middleware": [
+          "authorize"
+        ],
+        "security": [
+          "authorize"
+        ]
+      }
+    },
+    "/api/v-1/subscriptions/:id/cancel": {
+      "put": {
+        "summary": "PUT /api/v-1/subscriptions/:id/cancel",
+        "responses": [
+          {
+            "status": 200,
+            "description": "Success",
+            "contentType": "application/json",
+            "schema": {
+              "title": "cancel a subscription"
+            }
+          }
+        ],
+        "middleware": []
+      }
+    },
+    "/api/v-1/subscriptions/upcoming-renewals": {
+      "get": {
+        "summary": "GET /api/v-1/subscriptions/upcoming-renewals",
+        "responses": [
+          {
+            "status": 200,
+            "description": "Success",
+            "contentType": "application/json",
+            "schema": {
+              "title": "get upcoming renewals"
+            }
+          }
+        ],
+        "middleware": []
+      }
+    },
+    "/api/v-1/workflows/subscription/reminder": {
+      "post": {
+        "summary": "POST /api/v-1/workflows/subscription/reminder",
+        "responses": [
+          {
+            "status": 200,
+            "description": "Success",
+            "contentType": "application/json"
+          }
+        ],
+        "middleware": []
+      }
+    },
+    "/": {
+      "get": {
+        "summary": "GET /",
+        "responses": [
+          {
+            "status": 200,
+            "description": "Success",
+            "contentType": "text/html",
+            "schema": "Welcome to the subscription tracker api"
+          }
+        ],
+        "middleware": []
+      }
+    }
+  },
+  "stats": {
+    "totalEndpoints": 17,
+    "methodCounts": {
+      "POST": 5,
+      "GET": 7,
+      "PUT": 3,
+      "DELETE": 2
+    },
+    "statusCodes": [
+      200,
+      201,
+      401,
+      403,
+      500
+    ],
+    "pathsWithParams": 4,
+    "middlewareUsage": [
+      "authorize"
+    ]
+  },
+  "tags": {
+    "api": {
+      "name": "api",
+      "description": "Routes under /api",
+      "paths": [
+        "/api/v-1/auth/sign-up",
+        "/api/v-1/auth/sign-in",
+        "/api/v-1/users",
+        "/api/v-1/users/:id",
+        "/api/v-1/subscriptions",
+        "/api/v-1/subscriptions/:id",
+        "/api/v-1/subscriptions/user/:id",
+        "/api/v-1/subscriptions/:id/cancel",
+        "/api/v-1/subscriptions/upcoming-renewals",
+        "/api/v-1/workflows/subscription/reminder"
+      ]
+    },
+    "root": {
+      "name": "root",
+      "description": "Routes under /root",
+      "paths": [
+        "/"
+      ]
+    }
+  },
+  "security": {
+    "middleware": [
+      "authorize"
+    ],
+    "description": "Detected security middleware in the application"
+  }
+}
